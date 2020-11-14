@@ -8,10 +8,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-
 app.post('/charge',urlencodedParser, (req, res) => {
     var stripeToken = req.body.token;
-
      stripe.charges.create({
         amount: req.body.amount * 100,
         currency: 'usd',
