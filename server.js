@@ -7,6 +7,7 @@ const stripe = require('stripe')('sk_test_51HnOIGHFh0EYi2CVhNrGyoSxkcAR2Ic5oxKBr
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.post('/charge',urlencodedParser, (req, res) => {
     var stripeToken = req.body.token;
 
