@@ -1,13 +1,15 @@
 const express = require('express');
+var bodyParser = require('body-parser');
+const cors = require('cors');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Set your stripe private key here
 const stripe = require('stripe')('sk_test_51HnOIGHFh0EYi2CVhNrGyoSxkcAR2Ic5oxKBrWXvU6jgmBHU4kfIBYjq07pD3WbOaU7p5WleVOxtQ4ygKlc8hBb700nNzRsOEp');
 const app = express();
 app.use(cors());
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
-
+app.use(cors());
 app.post('/charge',urlencodedParser, (req, res) => {
     var stripeToken = req.body.token;
      stripe.charges.create({
