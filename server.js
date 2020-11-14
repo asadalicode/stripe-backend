@@ -5,6 +5,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 // Set your stripe private key here
 const stripe = require('stripe')('sk_test_51HnOIGHFh0EYi2CVhNrGyoSxkcAR2Ic5oxKBrWXvU6jgmBHU4kfIBYjq07pD3WbOaU7p5WleVOxtQ4ygKlc8hBb700nNzRsOEp');
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.post('/charge',urlencodedParser, (req, res) => {
     var stripeToken = req.body.token;
@@ -27,4 +28,4 @@ app.post('/charge',urlencodedParser, (req, res) => {
         res.status(err.status || 500).json({ message: err.message });
       });
       
-      app.listen(3000);
+    app.listen(port);
