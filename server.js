@@ -1,6 +1,6 @@
 const express = require('express');
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Set your stripe private key here
 const stripe = require('stripe')('sk_test_51HnOIGHFh0EYi2CVhNrGyoSxkcAR2Ic5oxKBrWXvU6jgmBHU4kfIBYjq07pD3WbOaU7p5WleVOxtQ4ygKlc8hBb700nNzRsOEp');
