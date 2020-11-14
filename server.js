@@ -8,7 +8,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+const corsHandler = cors({ origin: true });
 app.post('/charge',urlencodedParser, (req, res) => {
+     corsHandler(request, response, () => {
     var stripeToken = req.body.token;
 
      stripe.charges.create({
@@ -24,6 +26,7 @@ app.post('/charge',urlencodedParser, (req, res) => {
         // do something in error here
      });
     });
+});
 
     app.use(function(err, req, res, next) {
         res.status(err.status || 500).json({ message: err.message });
