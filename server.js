@@ -15,7 +15,7 @@ app.post('/charge',urlencodedParser, (req, res) => {
         source: stripeToken,
         // capture: false,
     }).then(response => {
-        res.send(response)
+        res.send(response);
         // do something in success here
      }).catch(error => {
          res.send(error);
