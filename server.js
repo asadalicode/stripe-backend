@@ -15,8 +15,9 @@ app.post('/charge',urlencodedParser, (req, res) => {
      stripe.charges.create({
         amount: req.body.amount * 100,
         currency: 'usd',
-        source: stripeToken,
-        // capture: false,
+        source: req.body.token,
+        capture: false,
+        description: 'first payment',
     }).then(response => {
         res.send(response);
         // do something in success here
