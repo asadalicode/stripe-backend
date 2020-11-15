@@ -19,7 +19,7 @@ app.post('/charge', (req, res) => {
     console.log(req.body);
  
      stripe.charges.create({
-        amount: Number(req.body.amount),
+        amount: parseInt(req.body.amount),
         currency: 'ngn',
         source: req.body.token,
         // capture: false,
