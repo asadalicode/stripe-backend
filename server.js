@@ -10,14 +10,19 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 
 app.use(cors());
-app.post('/charge',urlencodedParser, (req, res) => {
-    var stripeToken = req.body.token;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
+app.post('/charge', (req, res) => {
+    console.log(req.body);
+ 
      stripe.charges.create({
-        amount: req.body.amount * 100,
-        currency: 'usd',
+        amount: Number(req.body.amount),
+        currency: 'ngn',
         source: req.body.token,
-        capture: false,
-        description: 'first payment',
+        // capture: false,
     }).then(response => {
         res.send(response);
         // do something in success here
